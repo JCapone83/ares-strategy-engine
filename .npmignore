@@ -1,0 +1,6 @@
+.github/
+docs/benchmark-results/
+docs/media/
+dist/
+coverage/
+*.tgz

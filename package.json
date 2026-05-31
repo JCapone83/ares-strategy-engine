@@ -1,0 +1,54 @@
+{
+  "name": "ares-strategy-engine",
+  "private": false,
+  "version": "0.1.0",
+  "description": "An open-source Mars governance strategy engine and AI model challenge sandbox.",
+  "author": "Titans Forge",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JCapone83/ares-strategy-engine.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JCapone83/ares-strategy-engine/issues"
+  },
+  "homepage": "https://github.com/JCapone83/ares-strategy-engine#readme",
+  "keywords": [
+    "mars",
+    "governance",
+    "simulation",
+    "react",
+    "benchmark",
+    "ai",
+    "strategy-game"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "grade": "node grade_agent.js",
+    "optimize": "node search_paths.js",
+    "test": "node --test",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "lucide-react": "^1.17.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^10.3.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.6.0",
+    "vite": "^8.0.12"
+  }
+}
