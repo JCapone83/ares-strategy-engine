@@ -1,6 +1,11 @@
 .github/
+.serve-logs/
+codex_blind_run_*.md
 docs/benchmark-results/
 docs/media/
 dist/
 coverage/
 *.tgz
+*.zip
+*.log
+.DS_Store

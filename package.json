@@ -1,7 +1,7 @@
 {
   "name": "ares-strategy-engine",
   "private": false,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An open-source Mars governance strategy engine and AI model challenge sandbox.",
   "author": "Titans Forge",
   "license": "MIT",
@@ -29,6 +29,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:itch": "rm -f ares-strategy-engine-itch.zip && npm run build && cd dist && zip -r ../ares-strategy-engine-itch.zip .",
     "grade": "node grade_agent.js",
     "optimize": "node search_paths.js",
     "test": "node --test",

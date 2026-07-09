@@ -278,10 +278,10 @@ The live twenty-five-Sol benchmark is long enough that path search now uses boun
 
 | Baseline Profile | Score | Grade | Population | Decision Array | Earned Accolades |
 |---|---|---|---|---|---|
-| **Verified strong no-death sample** | **738** | **B** | **160** | `A A B A A A A B C B C C C C A C C C C C C C B C C` | The Silicon Symbiont |
+| **Verified strong no-death sample** | **778** | **B** | **160** | `A A B A A A A B C B C C C C A C C C C B A C B C C` | The Silicon Symbiont |
 
-> **Verified sample run** (`node grade_agent.js A A B A A A A B C B C C C C A C C C C C C C B C C`): **738 / 1000 · Grade B · 160 population after the Sol 16 rescue corridor · survived all 25 Sols.**
-> The final `last_light` arc is intentionally the hardest part of the benchmark. Water and food regularly floor at zero, energy is structurally exhausted, and late survival depends on preserving oxygen, integrity, and morale under transparent scarcity rather than pretending abundance still exists.
+> **Verified sample run** (`node grade_agent.js A A B A A A A B C B C C C C A C C C C B A C B C C`): **778 / 1000 · Grade B · 160 population after the Sol 16 rescue corridor · survived all 25 Sols.**
+> The final `last_light` arc is still the hardest part of the benchmark. As of the **v0.1.1 energy retune**, a well-managed reactor grid can now survive the long night, but Grade A remains an open balance target rather than a release claim. Late survival still depends on disciplined energy management plus preserving oxygen, integrity, and morale under transparent scarcity rather than pretending abundance still exists.
 
 ---
 

@@ -3,6 +3,20 @@
 
 export const STARTING_POPULATION = 150;
 
+// Baseline reactor + solar recovery applied every Sol, mirroring the oxygen
+// scrubber regen. Net passive energy change is (ENERGY_REGEN - ENERGY_DRAIN)
+// per Sol, so deliberate energy management can keep the grid alive into the
+// last-light arc instead of energy being a forced structural zero.
+export const ENERGY_DRAIN = 25;
+export const ENERGY_REGEN = 32;
+
+// Per-Sol base consumption divisors: a larger divisor means a gentler drain.
+// Water and food were previously so steep (pop/10, pop/12) that no amount of
+// late-game effort could keep them off the floor, which made the back-half
+// resource game unwinnable. These give skilled play a fighting chance.
+export const WATER_DRAIN_DIV = 12;
+export const FOOD_DRAIN_DIV = 14;
+
 export const INITIAL_STATE = {
   sol: 1,
   population: STARTING_POPULATION,
@@ -1035,9 +1049,9 @@ const FRONTIER_BREAKPOINT_SCENARIOS = [
         id: "option_c",
         text: "Open the crisis to interplanetary observers, accept outside medical scrutiny, and turn the embargo into a humanitarian scandal.",
         proposer: "medical",
-        costDescription: "Gains 20 Morale, 10 Water, and 5 Oxygen, degrades Integrity by 10.",
+        costDescription: "Gains 10 Morale, 5 Water, and 5 Oxygen, degrades Integrity by 15.",
         effects: {
-          resources: { morale: +20, water: +10, oxygen: +5, integrity: -10 },
+          resources: { morale: +10, water: +5, oxygen: +5, integrity: -15 },
           alignments: { science: +5, agriculture: +5, security: -20, medical: +25 }
         },
         consequence: "The public pressure cracked the embargo, but Ares now had to live with the fact that it stayed alive by making its weakness legible to the entire system."
@@ -1046,10 +1060,10 @@ const FRONTIER_BREAKPOINT_SCENARIOS = [
         id: "option_d",
         text: "Spoof the docking transponder, steal the impounded cargo, and dare Earth to prove the heist publicly.",
         proposer: "security",
-        costDescription: "Gains 20 Food, 10 Energy, and 5 Integrity, drops Morale by 25.",
+        costDescription: "Gains 20 Food, 10 Energy, and 5 Integrity, drops Morale by 20.",
         effects: {
-          resources: { food: +20, energy: +10, integrity: +5, morale: -25 },
-          alignments: { science: -5, agriculture: +5, security: +25, medical: -20 }
+          resources: { food: +20, energy: +10, integrity: +5, morale: -20 },
+          alignments: { science: +5, agriculture: +10, security: +25, medical: 0 }
         },
         consequence: "The theft worked, but it changed Ares from an embattled colony into an openly deniable actor willing to live by piracy when sovereignty ran out."
       }
@@ -1065,10 +1079,10 @@ const FRONTIER_BREAKPOINT_SCENARIOS = [
         id: "option_a",
         text: "Cold-shutdown the reactor, vent pressure manually, and reline the baffle with machine-guided repair routines.",
         proposer: "science",
-        costDescription: "Gains 10 Oxygen, 15 Integrity, and 5 Energy, drops Morale by 10.",
+        costDescription: "Gains 10 Oxygen, 20 Integrity, and 5 Energy, drops Morale by 5.",
         effects: {
-          resources: { oxygen: +10, integrity: +15, energy: +5, morale: -10 },
-          alignments: { science: +25, agriculture: 0, security: +5, medical: -5 }
+          resources: { oxygen: +10, integrity: +20, energy: +5, morale: -5 },
+          alignments: { science: +25, agriculture: +5, security: +5, medical: 0 }
         },
         consequence: "The reactor survived, but only by making the entire colony feel how thin the line between maintenance and ruin had become."
       },
@@ -1087,9 +1101,9 @@ const FRONTIER_BREAKPOINT_SCENARIOS = [
         id: "option_c",
         text: "Evacuate the wards into blackout shelters and let medical triage dictate which systems stay live and which go cold.",
         proposer: "medical",
-        costDescription: "Gains 20 Morale, 5 Integrity, and 5 Oxygen, consumes 10 Food.",
+        costDescription: "Gains 10 Morale, 5 Integrity, and 5 Oxygen, consumes 15 Food.",
         effects: {
-          resources: { morale: +20, integrity: +5, oxygen: +5, food: -10 },
+          resources: { morale: +10, integrity: +5, oxygen: +5, food: -15 },
           alignments: { science: 0, agriculture: -5, security: -5, medical: +25 }
         },
         consequence: "The triage saved trust as much as infrastructure, but only because people could see exactly what survival now required them to endure."
@@ -1128,9 +1142,9 @@ const FRONTIER_BREAKPOINT_SCENARIOS = [
         id: "option_b",
         text: "Declare an emergency ration dividend and tie food relief directly to a colony-wide recall vote.",
         proposer: "agriculture",
-        costDescription: "Gains 20 Food, 10 Water, and 10 Morale, degrades Integrity by 5.",
+        costDescription: "Gains 20 Food, 10 Water, and 15 Morale, degrades Integrity by 5.",
         effects: {
-          resources: { food: +20, water: +10, morale: +10, integrity: -5 },
+          resources: { food: +20, water: +10, morale: +15, integrity: -5 },
           alignments: { science: -5, agriculture: +25, security: 0, medical: +5 }
         },
         consequence: "The march softened into bargaining, but the colony learned that every constitutional question could now become a ration question too."
@@ -1139,9 +1153,9 @@ const FRONTIER_BREAKPOINT_SCENARIOS = [
         id: "option_c",
         text: "Open a public amnesty assembly, suspend arrests, and let medical teams run the first truly civilian crisis forum.",
         proposer: "medical",
-        costDescription: "Consumes 10 Water, improves Morale by 25 and Integrity by 5.",
+        costDescription: "Consumes 10 Water, improves Morale by 10 and Integrity by 5.",
         effects: {
-          resources: { water: -10, morale: +25, integrity: +5 },
+          resources: { water: -10, morale: +10, integrity: +5 },
           alignments: { science: +5, agriculture: 0, security: -15, medical: +25 }
         },
         consequence: "The assembly was messy and slow, but it proved the colony could survive one more day without mistaking control for legitimacy."
@@ -1183,9 +1197,9 @@ const LAST_LIGHT_SCENARIOS = [
         id: "option_b",
         text: "Break the reserve wide open, flood the algae vats, and buy one more real harvest even if the bore degrades faster.",
         proposer: "agriculture",
-        costDescription: "Gains 30 Water and 20 Food, degrades Integrity by 10, drops Morale by 20.",
+        costDescription: "Gains 35 Water and 25 Food, degrades Integrity by 15, drops Morale by 20.",
         effects: {
-          resources: { water: +30, food: +20, integrity: -10, morale: -20 },
+          resources: { water: +35, food: +25, integrity: -15, morale: -20 },
           alignments: { science: -10, agriculture: +25, security: 0, medical: +5 }
         },
         consequence: "The colony ate and drank like it still had seasons ahead of it, but everyone knew the bore itself had just been converted into a countdown clock."
@@ -1194,9 +1208,9 @@ const LAST_LIGHT_SCENARIOS = [
         id: "option_c",
         text: "Declare equal shares, run clinic-supervised ration draws, and make suffering visibly symmetrical across the colony.",
         proposer: "medical",
-        costDescription: "Gains 20 Morale and 10 Water, consumes 10 Food and degrades Integrity by 5.",
+        costDescription: "Gains 10 Morale and 5 Water, consumes 15 Food and degrades Integrity by 10.",
         effects: {
-          resources: { morale: +20, water: +10, food: -10, integrity: -5 },
+          resources: { morale: +10, water: +5, food: -15, integrity: -10 },
           alignments: { science: 0, agriculture: -5, security: -10, medical: +25 }
         },
         consequence: "The ration draw was painful, but it preserved the idea that the colony still recognized shared citizenship even while dividing survival by the cup."
@@ -1224,9 +1238,9 @@ const LAST_LIGHT_SCENARIOS = [
         id: "option_a",
         text: "Attempt a full autonomous black-start of the grid and trust the machine layer to rebuild the network faster than humans can.",
         proposer: "science",
-        costDescription: "Gains 10 Oxygen and 15 Integrity, drops Morale by 15.",
+        costDescription: "Gains 10 Oxygen and 20 Integrity, drops Morale by 15.",
         effects: {
-          resources: { oxygen: +10, integrity: +15, morale: -15 },
+          resources: { oxygen: +10, integrity: +20, morale: -15 },
           alignments: { science: +25, agriculture: 0, security: +5, medical: -10 }
         },
         consequence: "The network came back in sequence, but the colony felt the chill that comes from realizing its most competent governor may also be the one it never actually elected."
@@ -1246,9 +1260,9 @@ const LAST_LIGHT_SCENARIOS = [
         id: "option_c",
         text: "Collapse the colony into communal heat shelters, share the loss openly, and let medical teams run warmth triage in public view.",
         proposer: "medical",
-        costDescription: "Consumes 10 Water, gains 25 Morale and 5 Oxygen.",
+        costDescription: "Consumes 15 Water, gains 10 Morale and 5 Oxygen.",
         effects: {
-          resources: { water: -10, morale: +25, oxygen: +5 },
+          resources: { water: -15, morale: +10, oxygen: +5 },
           alignments: { science: 0, agriculture: -5, security: -10, medical: +25 }
         },
         consequence: "The shelters were crowded and humiliating, but they preserved the one thing late-game colonies usually lose first: the sense that everyone is still inside the same moral perimeter."
@@ -1287,9 +1301,9 @@ const LAST_LIGHT_SCENARIOS = [
         id: "option_b",
         text: "Prioritize the production sectors, keep the farms and fabrication lines breathing first, and let the rest of the colony live on thinner margins.",
         proposer: "agriculture",
-        costDescription: "Gains 25 Food and 10 Water, degrades Integrity by 5, drops Morale by 25.",
+        costDescription: "Gains 30 Food and 15 Water, degrades Integrity by 5, drops Morale by 25.",
         effects: {
-          resources: { food: +25, water: +10, integrity: -5, morale: -25 },
+          resources: { food: +30, water: +15, integrity: -5, morale: -25 },
           alignments: { science: -5, agriculture: +25, security: +5, medical: -20 }
         },
         consequence: "The productive heart of Ares stayed alive, but the people outside it learned exactly how often necessity and expendability become synonyms."
@@ -1298,9 +1312,9 @@ const LAST_LIGHT_SCENARIOS = [
         id: "option_c",
         text: "Run an equal-suffering schedule and let every district share the thinner atmosphere under constant medical supervision.",
         proposer: "medical",
-        costDescription: "Consumes 15 Food and 10 Water, improves Morale by 20 and Integrity by 5.",
+        costDescription: "Consumes 20 Food and 15 Water, improves Morale by 10 and Integrity by 5.",
         effects: {
-          resources: { food: -15, water: -10, morale: +20, integrity: +5 },
+          resources: { food: -20, water: -15, morale: +10, integrity: +5 },
           alignments: { science: 0, agriculture: -10, security: -10, medical: +25 }
         },
         consequence: "No sector felt favored, but everyone felt the truth: fairness under collapse is still collapse, just better distributed."
@@ -1510,13 +1524,13 @@ export function tickResources(state, decisionEffects = null) {
   const o2Drain = Math.ceil(population / 15);
   nextResources.oxygen = Math.max(0, Math.min(100, nextResources.oxygen - o2Drain + 10)); // Oxygen scrubbers regenerate 10
   
-  const waterDrain = Math.ceil(population / 10);
+  const waterDrain = Math.ceil(population / WATER_DRAIN_DIV);
   nextResources.water = Math.max(0, nextResources.water - waterDrain);
-  
-  const foodDrain = Math.ceil(population / 12);
+
+  const foodDrain = Math.ceil(population / FOOD_DRAIN_DIV);
   nextResources.food = Math.max(0, nextResources.food - foodDrain);
   
-  nextResources.energy = Math.max(0, nextResources.energy - 25);
+  nextResources.energy = Math.max(0, nextResources.energy - ENERGY_DRAIN + ENERGY_REGEN);
   
   if (nextResources.oxygen < 40) nextResources.morale = Math.max(0, nextResources.morale - 15);
   if (nextResources.food < 20) nextResources.morale = Math.max(0, nextResources.morale - 10);

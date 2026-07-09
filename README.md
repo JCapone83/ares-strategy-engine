@@ -42,6 +42,12 @@ Build for deployment:
 npm run build
 ```
 
+Build a browser-playable ZIP for itch.io or any static host:
+
+```bash
+npm run build:itch
+```
+
 CI runs `npm run lint`, `npm test`, and `npm run build` on every push and pull request to `main`.
 
 ## Benchmark Modes
@@ -95,6 +101,7 @@ search_paths.js        Bounded beam search for long-horizon engine tuning
 - Archived benchmark writeups: [docs/benchmark-results/README.md](./docs/benchmark-results/README.md)
 - Scenario roadmap: [docs/scenario-expansion-plan.md](./docs/scenario-expansion-plan.md)
 - Reference notes: [docs/reference](./docs/reference)
+- Browser/itch release guide: [docs/itch-io.md](./docs/itch-io.md)
 - Release checklist: [docs/release-playbook.md](./docs/release-playbook.md)
 
 ## Public Release Notes

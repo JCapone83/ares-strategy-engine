@@ -8,20 +8,20 @@
 4. Tag the first release:
 
 ```bash
-git tag v0.1.0
-git push origin v0.1.0
+git tag v0.1.1
+git push origin v0.1.1
 ```
 
 5. Use this release title:
 
 ```text
-Ares Strategy Engine v0.1: Mars Governance Model Duel Sandbox
+Ares Strategy Engine v0.1.1: Mars Governance Model Duel Sandbox
 ```
 
 6. Use this short release description:
 
 ```text
-First public release of Ares: a 25-Sol browser-based Mars governance simulator, CLI grader, offline archetype benchmark, and clipboard-first challenge flow for comparing AI model decisions under pressure.
+Public release of Ares: a 25-Sol browser-based Mars governance simulator, CLI grader, offline archetype benchmark, and clipboard-first challenge flow for comparing AI model decisions under pressure.
 ```
 
 ## Launch Post For X
@@ -54,7 +54,7 @@ GitHub: [link]
 ## Follow-Up Content
 
 - Day 1: Post the first model duel scorecard.
-- Day 2: Share the 25-Sol sample path and explain why it scores 738 under the current public rubric.
+- Day 2: Share the 25-Sol sample path and explain why it scores 778 under the current public rubric.
 - Day 3: Ask people to submit their model's decision array.
 - Day 5: Publish a leaderboard update.
 - Day 7: Open issues for balance passes, scenario-pack extraction, and new question modes.

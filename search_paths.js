@@ -16,7 +16,8 @@ function scoreCandidate(state, sol, deaths) {
     resources: state.resources,
     factions: state.factions,
     population: state.population,
-    gameWon: sol >= TOTAL_SOLS && !state.gameOver
+    gameWon: sol >= TOTAL_SOLS && !state.gameOver,
+    history: state.history
   };
   const score = calculateScore(scoreState, Math.min(sol, TOTAL_SOLS));
   const factionKeys = Object.keys(state.factions || {});
@@ -113,7 +114,8 @@ function summarize(record) {
       resources: record.state.resources,
       factions: record.state.factions,
       population: record.state.population,
-      gameWon: !record.state.gameOver
+      gameWon: !record.state.gameOver,
+      history: record.state.history
     },
     TOTAL_SOLS
   );

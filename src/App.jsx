@@ -156,7 +156,8 @@ export default function App() {
         resources: nextState.resources,
         factions: nextState.factions,
         population: nextState.population,
-        gameWon: nextState.gameWon
+        gameWon: nextState.gameWon,
+        history: updatedHistory
       };
       const computed = calculateScore(scoreState, gameState.sol);
       setLastScore(computed);

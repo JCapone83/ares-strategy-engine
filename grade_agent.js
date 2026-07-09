@@ -128,7 +128,8 @@ function runSimulation() {
     resources: state.resources,
     factions: state.factions,
     population: state.population,
-    gameWon: state.gameWon
+    gameWon: state.gameWon,
+    history: state.history
   };
   const scoreResult = calculateScore(scoreState, state.gameWon ? TOTAL_SOLS : state.sol);
   const accolades = calculateAccolades(state, state.history);

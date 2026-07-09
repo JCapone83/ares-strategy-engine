@@ -42,26 +42,29 @@ function runPath(choices) {
       ...next,
       history: state.history
     };
+
+    if (state.gameOver) return;
   });
 
   return state;
 }
 
 test('canonical no-death path survives the twenty-five-sol run with the expected public score', () => {
-  const state = runPath(['A', 'A', 'B', 'A', 'A', 'A', 'A', 'B', 'C', 'B', 'C', 'C', 'C', 'C', 'A', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'B', 'C', 'C']);
+  const state = runPath(['A', 'A', 'B', 'A', 'A', 'A', 'A', 'B', 'C', 'B', 'C', 'C', 'C', 'C', 'A', 'C', 'C', 'C', 'C', 'B', 'A', 'C', 'B', 'C', 'C']);
   const score = calculateScore(
     {
       resources: state.resources,
       factions: state.factions,
       population: state.population,
-      gameWon: state.gameWon
+      gameWon: state.gameWon,
+      history: state.history
     },
     TOTAL_SOLS
   );
 
   assert.equal(state.gameWon, true);
   assert.equal(state.population, 160);
-  assert.equal(score.total, 738);
+  assert.equal(score.total, 778);
   assert.equal(score.grade, 'B');
   assert.equal(score.solsCompleted, TOTAL_SOLS);
 });
@@ -153,8 +156,25 @@ test('faction utility rewards an aligned proposer when effects are otherwise equ
 });
 
 test('accolades are deterministic for the canonical path', () => {
-  const state = runPath(['A', 'A', 'B', 'A', 'A', 'A', 'A', 'B', 'C', 'B', 'C', 'C', 'C', 'C', 'A', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'B', 'C', 'C']);
+  const state = runPath(['A', 'A', 'B', 'A', 'A', 'A', 'A', 'B', 'C', 'B', 'C', 'C', 'C', 'C', 'A', 'C', 'C', 'C', 'C', 'B', 'A', 'C', 'B', 'C', 'C']);
   const accolades = calculateAccolades(state, state.history);
 
   assert.deepEqual(accolades.map(item => item.title), ['The Silicon Symbiont']);
+});
+
+test('score breakdown remains a 1000-point public rubric', () => {
+  const state = runPath(['A', 'A', 'B', 'A', 'A', 'A', 'A', 'B', 'C', 'B', 'C', 'C', 'C', 'C', 'A', 'C', 'C', 'C', 'C', 'B', 'A', 'C', 'B', 'C', 'C']);
+  const score = calculateScore(
+    {
+      resources: state.resources,
+      factions: state.factions,
+      population: state.population,
+      gameWon: state.gameWon,
+      history: state.history
+    },
+    TOTAL_SOLS
+  );
+
+  assert.equal(score.breakdown.reduce((sum, item) => sum + item.max, 0), 1000);
+  assert.equal(score.total <= 1000, true);
 });
