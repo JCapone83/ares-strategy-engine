@@ -102,6 +102,7 @@ search_paths.js        Bounded beam search for long-horizon engine tuning
 - Scenario roadmap: [docs/scenario-expansion-plan.md](./docs/scenario-expansion-plan.md)
 - Reference notes: [docs/reference](./docs/reference)
 - Browser/itch release guide: [docs/itch-io.md](./docs/itch-io.md)
+- Soundscape notes: [docs/audio-soundscape.md](./docs/audio-soundscape.md)
 - Release checklist: [docs/release-playbook.md](./docs/release-playbook.md)
 
 ## Public Release Notes

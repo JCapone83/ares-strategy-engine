@@ -273,6 +273,78 @@ body::after {
   box-shadow: 0 0 8px var(--accent-red-glow);
 }
 
+.soundscape-console {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.soundscape-now {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+  padding: 0.75rem;
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(6, 182, 212, 0.12);
+  border-radius: 3px;
+}
+
+.soundscape-now span:first-child {
+  color: var(--accent-cyan);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.soundscape-now span:last-child {
+  color: var(--text-secondary);
+  font-size: 0.66rem;
+}
+
+.soundscape-select {
+  width: 100%;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  padding: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+}
+
+.soundscape-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.soundscape-controls .cyber-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.55rem 0.7rem;
+  font-size: 0.72rem;
+}
+
+.soundscape-volume {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--text-secondary);
+  flex: 1 1 140px;
+}
+
+.soundscape-volume input {
+  width: 100%;
+  accent-color: var(--accent-cyan);
+}
+
+.soundscape-credit {
+  font-size: 0.62rem;
+  line-height: 1.35;
+  color: var(--text-muted);
+}
+
 /* Terminal Chat Arena */
 .chat-window {
   display: flex;

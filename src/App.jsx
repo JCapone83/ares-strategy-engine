@@ -15,6 +15,7 @@ import GovernanceConsole from './components/GovernanceConsole';
 import CrisisLog from './components/CrisisLog';
 import TournamentPanel from './components/TournamentPanel';
 import ResultsScreen from './components/ResultsScreen';
+import SoundscapeConsole from './components/SoundscapeConsole';
 
 function cloneInitialState() {
   return JSON.parse(JSON.stringify(INITIAL_STATE));
@@ -452,6 +453,8 @@ export default function App() {
               onChangeGov={(gov) => setGameState(prev => ({ ...prev, activeGovernance: gov }))}
               disabled={!!consequenceLog || gameState.gameOver || gameState.gameWon}
             />
+
+            <SoundscapeConsole gameState={gameState} />
 
             {/* Systems Manual */}
             <div className="cyber-card" style={{ background: 'rgba(255, 255, 255, 0.01)' }}>
