@@ -2,9 +2,9 @@
   "name": "ares-strategy-engine",
   "private": false,
   "version": "0.1.1",
-  "description": "An open-source Mars governance strategy engine and AI model challenge sandbox.",
+  "description": "An source-available Mars governance strategy engine and AI model challenge sandbox.",
   "author": "Titans Forge",
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JCapone83/ares-strategy-engine.git"
@@ -34,7 +34,8 @@
     "optimize": "node search_paths.js",
     "test": "node --test",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "postbuild": "node scripts/stage-release-licenses.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.17.0",

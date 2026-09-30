@@ -1,0 +1,26 @@
+{
+  "schema": "forge_game_github_license_checkpoint_v1",
+  "release_id": "FG-LIC-20260930-12-GH1",
+  "game": "Ares: The Mars Survival Simulator",
+  "repository": "JCapone83/ares-strategy-engine",
+  "recorded_date": "2026-09-30",
+  "license": "Forge Game Hosting License 1.0",
+  "license_sha256": "28638be413f7815704fe68aed52a4ea4cb7bd4d28b35f2dca9b78d438a4a90bf",
+  "previous_mit_commit": "1eec5ee835ae4c0c54cddb267bb6677ddaed90ae",
+  "previous_mit_tree": "1d2d49446c7c1c2cc0ac2b59599bd1a1db4566e5",
+  "previous_mit_license_blob": "b4711767fcb3d539183836648ed2439f181478d4",
+  "previous_mit_license_sha256": "3780b6186f5e587b2eefdf0b828864fbf97ed9295e162a12765785c56f00f39d",
+  "package_version_unchanged": "0.1.1",
+  "adoption_commit": "First commit containing this checkpoint; see repository history.",
+  "change_scope": "License policy, rights documentation, root package metadata, and release-notice staging only. No gameplay or media files changed.",
+  "newly_authored_forge_paths": [
+    "LICENSE",
+    "LICENSING.md",
+    "LICENSING_CHECKPOINT.json",
+    "scripts/stage-release-licenses.mjs"
+  ],
+  "prior_grants_preserved": true,
+  "third_party_and_media_terms_preserved": true,
+  "itch_source_equivalence": "Not certified; this checkpoint identifies the GitHub source policy, not a newly uploaded playable build.",
+  "approval": "Owner approved license wording and requested all existing game repositories except Titans of Mars adopt it on September 30, 2026."
+}

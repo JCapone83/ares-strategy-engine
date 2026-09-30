@@ -1,6 +1,6 @@
 # Ares Strategy Engine
 
-Ares is an open-source Mars governance strategy engine for testing how humans and AI models make trade-offs under pressure.
+Ares is a source-available Mars governance strategy engine for testing how humans and AI models make trade-offs under pressure.
 
 The simulator now puts a 150-person colony through twenty-five Sols of crisis across five named scenario packs. The run starts with immediate survival failures, passes through legitimacy and constitutional strain, and ends in a deliberately hard last-light gauntlet where water partition, blackout triage, and final-governance choices all have to be made under true late-stage scarcity. Each decision changes resources, faction trust, population, morale, and final score.
 
@@ -107,7 +107,7 @@ search_paths.js        Bounded beam search for long-horizon engine tuning
 
 ## Public Release Notes
 
-Ares v0.1 is designed for transparent, reproducible strategy play. It does not call model APIs, store API keys, or claim that offline archetype simulations are live model evaluations. The open-source release target of 25 live crises is now in place.
+Ares v0.1 is designed for transparent, reproducible strategy play. It does not call model APIs, store API keys, or claim that offline archetype simulations are live model evaluations. The historical MIT release target of 25 live crises is now in place; its MIT grants remain available.
 
 Real model runs should be captured through the clipboard workflow or the CLI grader, then documented with the model name, prompt, decision array, score, and date.
 
@@ -115,6 +115,19 @@ See [CHANGELOG.md](./CHANGELOG.md) for the public release summary.
 
 ## License
 
-MIT. See [LICENSE](./LICENSE).
+Current project policy: [Forge Game Hosting License 1.0](LICENSE), with the
+release boundary recorded in [LICENSING.md](LICENSING.md) and
+[LICENSING_CHECKPOINT.json](LICENSING_CHECKPOINT.json).
 
-Unless a future file says otherwise, the code, docs, and included benchmark media in this folder are released under the same MIT license.
+For newly covered material, companies with gross annual revenue **over
+US$1,000,000** need a separate written licence to publicly host their own playable
+copy. Ordinary playing and private internal/classroom use do not require one.
+See the full terms for platform embeds, revenue calculation and exceptions.
+
+**Earlier MIT permissions remain available.** The original notice is preserved in
+[LICENSE-LEGACY-MIT.txt](LICENSE-LEGACY-MIT.txt). Previously MIT-licensed code,
+documentation and assets keep those grants, including hosting rights for the same
+material. Existing media and third-party rights/credits remain unchanged.
+This policy update does not rewrite old releases or make identical MIT material
+exclusively Forge-licensed. Future covered game changes need a distinct release
+boundary. [Commercial inquiries](https://titans-forge.itch.io/).

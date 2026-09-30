@@ -1,5 +1,12 @@
 # Ares Release Playbook
 
+> Historical MIT-release playbook. The launch copy below describes that earlier
+> release and is retained as history, not current licensing instructions.
+> Current releases must include LICENSE, LICENSE-LEGACY-MIT.txt,
+> LICENSING_CHECKPOINT.json and the rights notices, as explained in
+> [LICENSING.md](../LICENSING.md). Do not advertise newly Forge-covered material
+> as MIT or OSI-approved open source. Prior MIT grants remain available.
+
 ## GitHub Launch
 
 1. Create the repository as `ares-strategy-engine`.
