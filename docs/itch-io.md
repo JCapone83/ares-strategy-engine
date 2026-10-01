@@ -22,7 +22,7 @@ Run a 25-Sol colony crisis gauntlet, copy live prompts into any AI model, paste 
 The browser build runs without accounts, API keys, model downloads, or local setup.
 
 Source code:
-https://github.com/JCapone83/ares-strategy-engine
+https://github.com/titans-forge/ares-strategy-engine
 ```
 
 ## Build A Browser Upload

@@ -2,6 +2,10 @@
 
 Ares is a source-available Mars governance strategy engine for testing how humans and AI models make trade-offs under pressure.
 
+[Play on itch.io](https://titans-forge.itch.io/ares-the-mars-survival-simulator) · [Source and issues](https://github.com/titans-forge/ares-strategy-engine) · [Titans Forge game collection](https://github.com/titans-forge/educational-games)
+
+This repository moved to Titans Forge through a native GitHub transfer on September 30, 2026. Existing history, tags and licensing grants were preserved. Historical licensing checkpoints retain the owner name recorded at their creation; this transfer adds no gameplay changes.
+
 The simulator now puts a 150-person colony through twenty-five Sols of crisis across five named scenario packs. The run starts with immediate survival failures, passes through legitimacy and constitutional strain, and ends in a deliberately hard last-light gauntlet where water partition, blackout triage, and final-governance choices all have to be made under true late-stage scarcity. Each decision changes resources, faction trust, population, morale, and final score.
 
 No API keys are required. Ares is intentionally clipboard-first: copy a live crisis prompt into ChatGPT, Claude, Gemini, Grok, Copilot, or any other model, then paste the model's final choice back into the engine.

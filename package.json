@@ -2,17 +2,17 @@
   "name": "ares-strategy-engine",
   "private": false,
   "version": "0.1.1",
-  "description": "An source-available Mars governance strategy engine and AI model challenge sandbox.",
+  "description": "A source-available Mars governance strategy engine and AI model challenge sandbox.",
   "author": "Titans Forge",
   "license": "SEE LICENSE IN LICENSE",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JCapone83/ares-strategy-engine.git"
+    "url": "git+https://github.com/titans-forge/ares-strategy-engine.git"
   },
   "bugs": {
-    "url": "https://github.com/JCapone83/ares-strategy-engine/issues"
+    "url": "https://github.com/titans-forge/ares-strategy-engine/issues"
   },
-  "homepage": "https://github.com/JCapone83/ares-strategy-engine#readme",
+  "homepage": "https://titans-forge.itch.io/ares-the-mars-survival-simulator",
   "keywords": [
     "mars",
     "governance",
